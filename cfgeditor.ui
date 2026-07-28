@@ -1163,8 +1163,14 @@
               <widget class="QLabel" name="label">
                <property name="minimumSize">
                 <size>
-                 <width>111</width>
-                 <height>16</height>
+                 <width>128</width>
+                 <height>24</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>128</width>
+                 <height>24</height>
                 </size>
                </property>
                <property name="frameShape">
@@ -1289,7 +1295,7 @@
           <property name="maximumSize">
            <size>
             <width>1677721</width>
-            <height>41</height>
+            <height>16777215</height>
            </size>
           </property>
           <property name="title">
@@ -1331,10 +1337,16 @@
         </item>
         <item row="1" column="2">
          <widget class="QGroupBox" name="groupBoxextraBytes">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>64</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>41</height>
+            <height>16777215</height>
            </size>
           </property>
           <property name="title">
