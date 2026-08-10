@@ -791,7 +791,11 @@ void CFGEditor::bindDisplayButtons() {
         qDebug() << "translucency changed";
         ui->map16GraphicsView->tileChanged(ui->translucentCheckBox, TileChangeAction::Translucent, TileChangeType::All, state == Qt::Checked);
     });
-
+    QStandardItemModel* model = qobject_cast<QStandardItemModel*>(ui->comboBoxTilePalette->model());
+    QModelIndex placeholderPaletteIdx = model->index(8, ui->comboBoxTilePalette->modelColumn(), ui->comboBoxTilePalette->rootModelIndex());
+    QStandardItem* placeholderPaletteItem = model->itemFromIndex(placeholderPaletteIdx);
+    placeholderPaletteItem->setSelectable(false);
+    placeholderPaletteItem->setEnabled(false);
     connect(ui->comboBoxTilePalette, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [&](int index){
         qDebug() << "palette for tile changed";
         if (index == 8) {
