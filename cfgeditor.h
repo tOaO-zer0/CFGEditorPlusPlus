@@ -12,23 +12,34 @@
 #include <QStandardItemModel>
 #include <QDir>
 #include <QMap>
+#include <optional>
 #include "utils.h"
 #include "jsonsprite.h"
 #include "snesgfxconverter.h"
 #include "eightbyeightviewcontainer.h"
 #include "palettecontainer.h"
 #include "map16provider.h"
+#include <QCommandLineParser>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class CFGEditor; }
 QT_END_NAMESPACE
+
+struct CFGEditorCommandLineOptions
+{
+    static constexpr int gfxFileCount = 4;
+
+    QString cfgFile;
+    QString palette;
+    QString sp1, sp2, sp3, sp4;
+};
 
 class CFGEditor : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    CFGEditor(const QStringList& argv, QWidget *parent = nullptr);
+    CFGEditor(QWidget *parent = nullptr);
     ~CFGEditor();
     void deleteInstaller();
     void setUpMenuBar(QMenuBar*);
@@ -81,6 +92,9 @@ public:
             edit->setText(QString::asprintf("%02X", tweak->to_byte()));
         });
     }
+
+    static std::optional<CFGEditorCommandLineOptions> parseCommandLineOptions(const QCoreApplication &application);
+    void applyCommandLineOptions(const CFGEditorCommandLineOptions &options);
 private:
     Ui::CFGEditor *ui;
     JsonSprite* sprite;
