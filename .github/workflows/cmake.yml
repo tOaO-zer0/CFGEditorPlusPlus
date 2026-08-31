@@ -152,25 +152,25 @@ jobs:
 
     steps:
     - name: Download Windows static exe
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       with:
         name: CFGEditorPlusPlus-windows-static
         path: release-files/
 
     - name: Download Windows installer
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       with:
         name: ICFGEditor-windows
         path: release-files/
 
     - name: Download Linux AppImage
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       with:
         name: CFGEditorPlusPlus-AppImage
         path: release-files/
 
     - name: Create release
-      uses: softprops/action-gh-release@v2
+      uses: softprops/action-gh-release@v3
       with:
         generate_release_notes: true
         prerelease: false
